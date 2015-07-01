@@ -9,10 +9,6 @@ set hlsearch
 set number
 set laststatus=2
 set cmdheight=2
-
-#set screen ruler
 set ruler
 set colorcolumn=85
 highlight ColorColumn ctermbg=DarkGray
-#end screen ruler
-

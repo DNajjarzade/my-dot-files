@@ -1,0 +1,157 @@
+templates:
+  global:
+    # configuration of email parameters
+    # -> each feed will send an email with the accepted entries
+    # -> can be disabled per feed with email: active: False
+    email: 
+      from: flexget@earth.dnet.ml
+      to: dariush@dnet.ml
+      smtp_host: sonne
+      smtp_port: 25
+      #smtp_login: true
+      #smtp_username: <username>
+      #smtp_password: <password>
+      #smtp_tls: true
+    download: /home/dariush/Downloads
+  tv:
+    series_premiere: no    
+    quality: 720p
+    content_filter:
+      require:
+        - '*.avi'
+        - '*.mkv'
+        - '*.mp4'
+    content_size:
+      max: 900
+    # configuration of exists_series parameter
+    # -> check each accepted entry in the feed against these folders of series
+    # -> if the item exists in one of the folders, it wouldn't be dowloaded again.
+    exists_series:
+      #- /media/DN-M/Video/TV Show/
+      #- /media/dariush/DN-S/TV-Show/
+      #- /media/dariush/DN-S2/TV-Show/
+      #- /media/dariush/DN-L/Video/TV-Show/
+      - /media/dariush/DN-F/TV-Show/
+        # configuration of exec parameters
+    # -> I've got multiple volumes with tv series in my setup and not all of them are always
+    # -> connected or mounted to my system, but I will check them with the plugin exists_series.
+    # -> So I used the plugin adv_exec to execute a shell script which manages my volumes.
+    # -> The script creates symbolic links for each "real" volume and creates "fake" folders 
+    # -> for each missed volume in ~/.flexget/exists_series/folder[0|1|2|...]
+    #exec:
+    #  on_start: /home/dariush/.flexget/manage_exists_series.sh
+    #manual: yes
+    # configuration of series parameters
+    # -> this lists represents my series I would automaticly downlaoded
+    series:
+      settings:
+        HDTV:
+          propers: no
+          quality: 720p
+      HDTV:
+        - 2 Broke Girls
+        - American Dad!
+        #- Arrested Development
+        - Arrow
+        #- Beauty and the Beast
+        #- Boardwalk Empire
+        #- Bones
+        - Castle
+        #- Californication
+        - Citizen Khan
+        #- Cuckoo
+        - Continuum
+        - Criminal Minds
+        #- Dexter
+        - Dark Matter
+        #- Doctor Who
+        #- Doctor Who 2005
+        - Episodes
+        - Family Guy
+        - Falling Skies
+        #- Fringe
+        #- Futurama
+        - Game Of Thrones
+        #- Gossip Girl
+        - Green Lantern
+        #- Grey's Anatomy
+        - Grimm
+        - Gotham
+        - Hell on Wheels
+        #- How I Met Your Mother
+        #- Lost Girl
+        #- MAD
+        #- Mad Men
+        - Modern Family
+        - Monsters vs Aliens
+        #- Nikita
+        - Person of Interest
+        - Supernatural
+        #- Save Me
+        #- Star Wars The Clone Wars
+        - Star Wars Rebels
+        - The Big Bang Theory
+        - The Mentalist
+        - The Simpsons
+        - Simpsons, The
+        #- The Vampire Diaries
+        - The Walking Dead
+        #- True Blood
+        - Under the Dome
+        - Vikings
+        #- Wallander
+tasks:
+  #EZRSS:
+    #rss: https://ezrss.it/feed/
+    #template:
+      #- tv
+    #priority: 10
+  #Extra Torrent:
+    #rss: http://extratorrent.to/rss?cid=8
+    #template:
+      #- tv
+    #priority: 20
+  #BT Chat:
+    #rss: http://rss.bt-chat.com/?cat=9
+    #template:
+      #- tv
+    #priority: 10
+  showrss:
+    rss: http://showrss.info/feeds/all.rss
+    template:
+      - tv
+    priority: 10
+# Inspired by the great wiki cookbook entry "Sort Downloads" (http://flexget.com/wiki/Cookbook/SortDownloads)
+# I designed some "feeds" that manages my downloaded series on my local machine and on my network storage.
+# It will sort the completed torrents by "<series_name>/Season <series_season>/<file>"
+  move-episodes:
+    limit_new: 100
+    metainfo_series: yes 
+    accept_all: yes
+    all_series: yes
+    # use as the feed input a local directory where my series are located
+    find:
+      regexp: .*(avi|mkv|mp4)$ 
+      path:
+        - /home/dariush/Downloads
+      recursive: no
+    # the series plugin rejected every item that was seen before
+    # so we must disable the builtin seen functions
+    disable_builtins: [seen]
+    # Ignore samples
+    regexp:
+      reject: 
+        - sample
+        #- -lname 
+    set:
+      path: /home/dariush/.flexget/exists_series/{{series_name}}/Season {{"%02d"|format(series_season)}}/
+      filename: '{{title}}{{ location|pathext }}'
+    move:
+      to: /home/dariush/.flexget/exists_series/{{series_name}}/Season {{"%02d"|format(series_season)}}/
+      #clean_source: 75 
+    exec:
+      - '[[ -d "{{path}}" ]] || mkdir "{{path}}"'
+      #auto_escape: yes
+      - ln -s "{{path}}{{filename}}" '/home/dariush/Downloads/{{filename}}'
+      - echo "create a symlink from '{{path}}{{filename}}' to '{{ location }}' inorder to keep torrent intact"
+    manual: yes

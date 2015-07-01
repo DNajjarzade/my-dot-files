@@ -49,7 +49,7 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
 
 # Example aliases
  alias zshconfig="nano ~/.zshrc && reload"
- alias zshrc="nano ~/.zshrc && reload"
+ alias zshrc="vim ~/.zshrc && reload"
 
  alias ohmyzsh="nano ~/.oh-my-zsh"
  alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"

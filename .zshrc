@@ -63,15 +63,15 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
  alias hs='history | grep -i $1'
 
 ## get rid of command not found ##
-alias cd..='cd ..'
+ alias cd..='cd ..'
  
 ## a quick way to get out of current directory ##
-alias ..='cd ..'
-alias ...='cd ../../../'
-alias ....='cd ../../../../'
-alias .....='cd ../../../../'
-alias .4='cd ../../../../'
-alias .5='cd ../../../../..'
+ alias ..='cd ..'
+ alias ...='cd ../../../'
+ alias ....='cd ../../../../'
+ alias .....='cd ../../../../'
+ alias .4='cd ../../../../'
+ alias .5='cd ../../../../..'
  
  alias home='cd ~/'
  alias documents='cd ~/Documents'

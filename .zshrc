@@ -89,6 +89,10 @@ cd() {
     builtin cd ~ && ls
   fi
 }
+# update my-dot-files
+alias pull-dot-files='cd ~/my-dot-files/ && /usr/bin/git pull'
+alias push-dot-files='cd ~/my-dot-files/ && /usr/bin/git push'
+
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -143,6 +147,7 @@ alias ssh2sonne='ssh root@sonne.dnet.ml'
 alias ssh2heimdal='ssh root@heimdal'
 alias ssh2kali='ssh -X dariush@kali'
 alias ssh2helium='ssh -p 54322 dariush@helium.ml'
+alias ssh2zotiac='ssh -p 54323 dariush@zotiac.no-ip.org'
 alias rsyncFromHelium='rsync -avzPh -e "ssh -p 54322" dariush@helium.ml:'
 
 #python shurtcuts

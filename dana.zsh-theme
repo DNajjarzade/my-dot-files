@@ -12,7 +12,7 @@ PROMPT='
 $(ssh_connection)%{$fg_bold[cyan]%}%n%{$reset_color%}%{$fg[yellow]%}@%{$reset_color%}%{$fg_bold[blue]%}%m%{$reset_color%}:%{${fg_bold[green]}%}%~%{$reset_color%}$(git_prompt_info)
 %{${fg[$CARETCOLOR]}%}λ% %{${reset_color}%}'
 
-RPS1='${return_code}%{$fg[grey]%}[ %D ]%{$fg[grey]%}[ %* ]'
+RPS1='${return_code}%{$fg[white]%}[ %D ]%{$fg[white]%}[ %* ]'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[magenta]%}^%{$reset_color%}%{$fg_bold[yellow]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"

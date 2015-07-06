@@ -152,3 +152,4 @@ alias rsyncFromHelium='rsync -avzPh -e "ssh -p 54322" dariush@helium.ml:'
 
 #python shurtcuts
 alias ipy3="ipython3 notebook --ip='*'" 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

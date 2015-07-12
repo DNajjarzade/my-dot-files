@@ -41,11 +41,11 @@ ZSH_THEME="dana"
 plugins=(command-not-found debian encode64 last-working-dir screen zsh-syntax-highlighting antigen) # alias-tips)
 
 source $ZSH/oh-my-zsh.sh
-#source /home/dariush/.oh-my-zsh/custom/plugins/antigen/antigen.zsh
-source /home/dariush/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.oh-my-zsh/custom/plugins/antigen/antigen.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Customize to your needs...
-export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/games
+export PATH=$PATH:~/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/games
 
 # Example aliases
  alias zshconfig="nano ~/.zshrc && reload"
@@ -79,7 +79,6 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
  alias desktop='cd ~/Desktop'
  alias music='cd ~/Music'
  alias videos='cd ~/Videos'
- alias DN-G='/media/dariush/DN-G/'
 
 # Automatically do an ls after each cd
 cd() {

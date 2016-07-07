@@ -15,6 +15,7 @@
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
+filetype off
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -50,7 +51,9 @@ set hidden
 " window as mentioned above, and/or either of the following options:
 " set confirm
 " set autowriteall
-
+set enc=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf8,prc
 " Better command-line completion
 set wildmenu
 
@@ -170,8 +173,16 @@ cal plug#begin('~/.vim/plugged')
 
  " On-demand loading
  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+ Plug 'scrooloose/syntastic'
+ let python_highlight_all=1
+ syntax on
+ Plug 'jnurmine/Zenburn'
+ Plug 'altercation/vim-colors-solarized'
+ Plug 'kien/ctrlp.vim'
  Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
+ Plug 'tpope/vim-fugitive'
+ Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
  " Using git URL
  Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -189,7 +200,16 @@ cal plug#begin('~/.vim/plugged')
  " Code to execute when the plugin is loaded on demand
  Plug 'Valloric/YouCompleteMe', { 'for': 'cpp' }
  autocmd! User YouCompleteMe call youcompleteme#Enable()
+
+
+
+ " set the runtime path to include Vundle and initialize
+ set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+ "
+ " " alternatively, pass a path where Vundle should install plugins
+ " "call vundle#begin('~/some/path/here')
+ Plugin 'gmarik/Vundle.vim'
+ call vundle#end()            " required
  
-
-
  call plug#end()

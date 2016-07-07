@@ -1,6 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 export HISTCONTROL=erasedups 
+#export LD_LIBRARY_PATH=/usr/lib/vmware/lib/libglibmm-2.4.so.1/:$LD_LIBRARY_PATH
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -122,34 +123,48 @@ alias firewall=iptlist
  
 
 # apt aliases
-alias agi='sudo apt-get install'
-alias agr='sudo apt-get remove'
-alias agu='sudo apt-get update'
-alias agup='sudo apt-get upgrade'
-alias agdu='sudo apt-get dist-upgrade'
+alias agi='sudo tsocks apt-get install'
+alias agr='sudo tsocks apt-get remove'
+alias agu='sudo tsocks apt-get update'
+alias agup='sudo tsocks apt-get upgrade'
+alias agdu='sudo tsocks apt-get dist-upgrade'
 alias acs='apt-cache search'
+alias agar='sudo tsocks apt-get autoremove'
 alias acsh='apt-cache show'
 alias 'dpgk -i'='sudo dpkg -i'
 
 # application shortcuts
-alias du='du -hsx * | sort -rh | head -15'
+alias sort-du='du -hsx * | sort -rh | head -15'
 alias move-video='flexget --task move-episodes -v'
+
+alias vga-rotate-right='xrandr --output VGA-0 --rotate right'
+alias vga-normal='xrandr --output VGA-0 --rotate normal'
 
 alias hping='sudo hping3'
 alias docker='sudo docker'
 
-alias start-plex='sudo service plexmediaserver start'
+alias start-plex='sudo mount -t cifs //earth/media ~/smb -o username=dariush,password=1,rw,,uid=1000 && sudo service plexmediaserver start'
 alias stop-plex='sudo service plexmediaserver stop'
 
 # ssh shortcuts
 alias ssh2earth='ssh -X dariush@earth'
-alias ssh2sonne='ssh root@sonne.dnet.ml'
+alias ssh2sonne='ssh root@sonne.dnet.redirectme.net'
 alias ssh2heimdal='ssh root@heimdal'
 alias ssh2kali='ssh -X dariush@kali'
 alias ssh2helium='ssh -p 54322 dariush@helium.ml'
 alias ssh2zotiac='ssh -p 54323 dariush@zotiac.no-ip.org'
+alias ssh2borjman='ssh root@borjman.tk'
+alias ssh2hoda.noc-PcomTelecom='ssh -p 51322 dariush@185.3.214.92'
+alias ssh2hoda.noc-respina='ssh -p 51322 dariush@22 5.160.127.194'
+alias ssh2no81.eniac='ssh -t -A -p 54322 dariush@helium.ml ssh -t -C -A root@91.241.92.47 ssh -A -v dariush@172.19.0.8'
+alias ssh2anarestan='ssh root@mail.anarestan.com'
 alias rsyncFromHelium='rsync -avzPh -e "ssh -p 54322" dariush@helium.ml:'
 
 #python shurtcuts
 alias ipy3="ipython3 notebook --ip='*'" 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Delete all stopped containers.
+alias dockerStop='printf "\n>>> Stoping all images\n\n" && docker stop $(docker ps -q)'
+alias dockerClean='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+alias drm="docker rm"
+alias dps="docker ps"

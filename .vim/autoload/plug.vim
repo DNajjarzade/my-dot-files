@@ -1,0 +1,1 @@
+/home/dariush/.vim/bundle/vim-plug/plug.vim

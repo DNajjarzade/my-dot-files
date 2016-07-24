@@ -50,9 +50,10 @@ export PATH=$PATH:~/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 
 # Example aliases
  alias zshconfig="nano ~/.zshrc && reload"
- alias zshrc="vim ~/.zshrc && reload"
+ alias zshrc="vim ~/.zshrc"
+ alias vimrc="vim ~/.vimrc"
 
- alias ohmyzsh="nano ~/.oh-my-zsh"
+ alias ohmyzsh="vim ~/.oh-my-zsh && reload"
  alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 # ls alias
@@ -73,7 +74,7 @@ export PATH=$PATH:~/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
  alias .....='cd ../../../../'
  alias .4='cd ../../../../'
  alias .5='cd ../../../../..'
- 
+ alias cd..='cd ..'
  alias home='cd ~/'
  alias documents='cd ~/Documents'
  alias downloads='cd ~/Downloads'
@@ -157,7 +158,7 @@ alias ssh2hoda.noc-PcomTelecom='ssh -p 51322 dariush@185.3.214.92'
 alias ssh2hoda.noc-respina='ssh -p 51322 dariush@22 5.160.127.115'
 alias ssh2no81.eniac='ssh -t -A -p 54322 dariush@helium.ml ssh -t -C -A root@91.241.92.47 ssh -A -v dariush@172.19.0.8'
 alias ssh2anarestan='ssh root@mail.anarestan.com'
-alias rsyncFromHelium='rsync -avzPh -e "ssh -p 54322" dariush@helium.ml:'
+alias rsyncFromHelium='rsync -avzPh -e "ssh -p 54322" dariush@helium.ml -i $1'
 
 #python shurtcuts
 alias ipy3="ipython3 notebook --ip='*'" 

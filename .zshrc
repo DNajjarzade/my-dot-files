@@ -47,7 +47,7 @@ ZSH_THEME="dana"
 plugins=(command-not-found debian encode64 last-working-dir screen tmux zsh-syntax-highlighting vi-mode Python pip colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
-source ~/my-dot-files/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/my-dot-files/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Customize to your needs...
 export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/games
@@ -56,7 +56,7 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
  alias zshconfig="vim ~/.zshrc && reload"
  alias zshrc="vim ~/.zshrc && reload"
 
- alias ohmyzsh="vim ~/.oh-my-zsh"
+ alias ohmyzsh="vim ~/oh-my-zsh"
  alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 # ls alias
@@ -68,6 +68,7 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
  alias hs='history | grep -i $1'
 
 # cd aliases
+ alias cd..='cd ..'
  alias ..='cd ..'
  alias ...='cd ../../'
  alias documents='cd ~/Documents'

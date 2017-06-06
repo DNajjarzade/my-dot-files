@@ -2,7 +2,7 @@
 
 dir=~/my-dot-files                    # dotfiles directory
 olddir=~/my-dot-files_old             # old dotfiles backup directory
-files=".bashrc .vimrc .vimi .conkyrc config.yml"        # list of files/folders to symlink in homedir
+files=".bashrc .vimrc .vim .conkyrc config.yml"        # list of files/folders to symlink in homedir
 
 ##########
 # create dotfiles_old in homedir

@@ -7,7 +7,7 @@ setopt autocd extendedglob
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZSH=$HOME/my-dot-files/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

@@ -1,70 +1,111 @@
-set nocompatible              " required
-filetype off                  " required
+" no vi compat
+ set nocompatible
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-set  rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
-call vundle#begin()
+" filetype func off
+ filetype off
+
+" initialize vundle
+ set rtp+=~/.vim/bundle/Vundle.vim
+ call vundle#begin()
+
+" start- all plugins below
+ Plugin 'VundleVim/Vundle.vim'
+
+" stop - all plugins above
+ call vundle#end()
+
+" filetype func on
+ filetype plugin indent on
+
+" install gruvbox 
+ Plugin 'morhetz/gruvbox'
+
+" set color
+ colorscheme gruvbox
+ set background=dark
+ set colorcolumn=80
+
+"Lean & mean status/tabline for vim that's light as air.
+ Plugin 'bling/vim-airline'
+
+" a nice status line for vim
+ Plugin 'itchyny/lightline.vim'
+
+" a directory browser for vim
+ Plugin 'scrooloose/nerdtree.git'
+
+"vim-template plugin
+ Plugin 'aperezdc/vim-template'
+
+" Customize the settings for vim-template plugin
+ let g:email = "dariush@najjarza.de"
+ let g:user = "Dariush Najjarzade"
+ let g:license = "copyleft (ɔ)"
+
+" NERDTree shortcut
+ map <C-n> :NERDTreeToggle<CR>
+
+"yntastic is a syntax checking plugin for Vim
+ Plugin 'scrooloose/syntastic'
+
+" Syntastic statusline
+ set statusline+=%#warningmsg#
+ set statusline+=%{SyntasticStatuslineFlag()}
+ set statusline+=%*
+" Sytnastic settings
+ let g:syntastic_always_populate_loc_list = 1
+ let g:syntastic_auto_loc_list = 1
+ let g:syntastic_check_on_open = 1
+ let g:syntastic_loc_list_height=5
+ let g:syntastic_check_on_wq = 0
+" Better symbols
+ let g:syntastic_error_symbol = 'XX'
+ let g:syntastic_warning_symbol = '!!'
+
+" python Code Compleatation
+ Plugin 'davidhalter/jedi-vim'
+
+"fugitive.vim may very well be the best Git wrapper of all time
+ Plugin 'tpope/vim-fugitive'
+
+"YouCompleteMe is a fast, as-you-type, fuzzy-search code completion engine for
+"Vim.
+ Plugin 'valloric/youcompleteme'
+
+" Whitespace highlighting
+ Bundle 'ntpeters/vim-better-whitespace'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text Formatting/Tab settings
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ set formatoptions=tcrqn         " autowrap and comments (see :h 'fo-table)
+ set autoindent                  " keep indent on next line and make BS work with indenting
+ set wrap                        " wrap lines that exceed screen
+ set smarttab                    " Make Tab work fine with spaces
+ set showmatch                   " show matching brackets
+ set matchtime=5                 " tenths of a second to blink matching brackets
+ set hlsearch                    " highlight search phrase matches (reset with :noh)
+ set incsearch                   " do highlight as you type you search phrase
+ set list                        " show tabs, trailings spaces, ...
+ set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" File settings
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ set encoding=utf-8              " Let Vim use utf-8 internally
+ set fileencoding=utf-8          " Default for new files
+ set termencoding=utf-8          " Terminal encoding
+ set fileformats=unix,dos,mac    " support all three, in this order
+ set fileformat=unix             " default file format
+
+ filetype plugin on              " load filetype plugins
+ filetype indent on " load indent settings
 
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" lightline fix
+ set laststatus=2
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-set splitbelow
-set splitright
-"split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-" Enable folding with the spacebar
-nnoremap <space> za
-Plugin 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
-Plugin 'vim-scripts/indentpython.vim'
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-set encoding=utf-8
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-let python_highlight_all=1
-syntax on
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme zenburn
-endif
-call togglebg#map("<F5>")
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-set nu
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" toggle line numbers both in normal and insert mode
+ set number
+ noremap <F3> :set invnumber<CR>
+ inoremap <F3> <C-O>:set invnumber<CR>

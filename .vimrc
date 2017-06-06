@@ -26,10 +26,13 @@
  set colorcolumn=80
 
 "Lean & mean status/tabline for vim that's light as air.
- Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " a nice status line for vim
- Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 
 " a directory browser for vim
  Plugin 'scrooloose/nerdtree.git'
@@ -104,6 +107,8 @@
 
 " lightline fix
  set laststatus=2
+ let g:airline_powerline_fonts = 1
+ let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
 
 " toggle line numbers both in normal and insert mode
  set number

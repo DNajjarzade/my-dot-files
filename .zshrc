@@ -1,9 +1,9 @@
 # Created by newuser for 4.3.17
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=100000
-SAVEHIST=100000
-setopt autocd extendedglob
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt autocd list_types extendedglob hist_ignore_dups hist_expire_dups_first hist_ignore_space extended_history inc_append_history hist_verify auto_menu auto_pushd
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # Path to your oh-my-zsh configuration.
@@ -58,6 +58,9 @@ export PATH=$PATH:/home/dariush/bin:/usr/java/bin:/usr/local/sbin:/usr/local/bin
 
  alias ohmyzsh="vim ~/oh-my-zsh"
  alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+
+# Vi aliases
+ alias vimrc="vim ~/.vimrc"
 
 # ls alias
  alias l='pwd; ls -lah'

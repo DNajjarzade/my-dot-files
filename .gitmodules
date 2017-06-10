@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/vim-airline-themes"]
 	path = .vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule ".spf13-vim-3"]
+	path = .spf13-vim-3
+	url = https://github.com/spf13/spf13-vim.git

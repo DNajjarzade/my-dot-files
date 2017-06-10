@@ -3,7 +3,7 @@
 TIME=$(date "+%Y-%m-%d_%H-%M-%S")
 dir=~/my-dot-files                    # dotfiles directory
 olddir=~/my-dot-files_old_$TIME             # old dotfiles backup directory
-files=".bashrc .vimrc .zshrc .vim .conkyrc config.yml"        # list of files/folders to symlink in homedir
+files=".vimrc .zshrc .spf13-vim-3 .conkyrc config.yml"        # list of files/folders to symlink in homedir
 
 ##########
 # create dotfiles_old in homedir
@@ -23,7 +23,3 @@ for file in $files; do
   echo "Creating symlink to $file in home directory."
   ln -s $dir/$file ~/$file
 done
-source ~/.zshrc
-source ~/.bashrc
-source ~/.conkyrc
-source ~/.vimrc

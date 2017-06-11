@@ -44,7 +44,7 @@ ZSH_THEME="dana"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(command-not-found debian encode64 last-working-dir screen tmux zsh-syntax-highlighting vi-mode Python pip colored-man-pages)
+plugins=(command-not-found debian encode64 screen tmux zsh-syntax-highlighting vi-mode Python pip colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 source ~/my-dot-files/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -103,5 +103,5 @@ alias ssh2fileserver='ssh root@192.168.20.241'
 alias ssh2earth='ssh dariush@192.168.20.246'
 alias ssh2sonne='ssh root@192.168.20.244'
 alias ssh2oxygen='ssh root@192.168.20.243'
-alias ssh2dnet='ssh dariush@dnet.redirectme.net -p 42222'
-alias ssh2helium='ssh dariush@helium.ml -p 54322'
+alias ssh2helium='ssh dariush@192.81.212.227 -p 54322'
+alias ssh2safar.com='ssh root@46.101.83.106 -p 53306'
